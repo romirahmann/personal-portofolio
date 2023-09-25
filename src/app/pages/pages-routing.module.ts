@@ -10,7 +10,7 @@ const routes: Routes = [
         component: DashboardComponent
     },
     {
-      path: '', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
+      path: 'admin', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule)
     },
     
 ];
