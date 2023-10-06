@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row text-center title">
+       <div class="col-12">
+        <h1>My Portofolio</h1>
+        <h3 class="mt-3">Unlocking Your Potential through
+            Professional Freelance Services</h3>
+            </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <ul class="list-inline categories-filter" id="filter">
+                <li class="list-inline-item "><a class="categories active text-white" data-filter="*">All</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter=".project" >Web Development</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter=".designing" >Design Graphic</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter=".photography" >Photography</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter=".development">Videography & Animation</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="row mt-3">
+        <ng-container *ngFor="let porto of displayPorto">
+            <div class="col-12 col-md-4">
+                <div class="gallery-box card">
+                    <div class="gallery-container">
+                        <a class="image-popup" title="">
+                            <img class="gallery-img img-fluid mx-auto" src="https://img.freepik.com/free-photo/autumn-leaf-falling-revealing-intricate-leaf-vein-generated-by-ai_188544-9869.jpg" alt=""/>
+                            <!-- <div class="gallery-overlay" (click)="open(i)">
+                                <h5 class="overlay-caption">{{data.title}}</h5>
+                            </div> -->
+                        </a>
+                    </div>
+                    <div class="box-content">
+                        <div class="d-flex align-items-center mt-1">
+                            <div class="flex-grow-1 text-muted"><a href="#" class="text-muted">Web Design Lomba Olivia</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        
+    </div>
+</div>
