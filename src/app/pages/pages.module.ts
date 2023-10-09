@@ -28,9 +28,11 @@ import { SharedModule } from "../shared/shared.module";
 import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 import { ToastsContainer } from "./dashboards/dashboard/toasts-container.component";
 import { DashboardsModule } from "./dashboards/dashboards.module";
+import { WebdevComponent } from './admin/webdev/webdev.component';
+import { AddProjectComponent } from './admin/add-project/add-project.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ToastsContainer],
+  declarations: [DashboardComponent, ToastsContainer, WebdevComponent, AddProjectComponent],
   imports: [
     CommonModule,
     FormsModule,

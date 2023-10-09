@@ -1,0 +1,148 @@
+<app-breadcrumbs
+  title="Master List"
+  [breadcrumbItems]="breadCrumbItems"
+></app-breadcrumbs>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title mb-0">Portofolio Web Development</h4>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div id="customerList">
+          <div class="row g-4 mb-3">
+            <div class="col-sm-auto">
+              <div class="d-flex gap-1">
+                <button
+                  routerLink="/admin/add-project"
+                  type="button"
+                  class="btn btn-success add-btn"
+                >
+                  <i class="ri-add-line align-bottom me-1"></i> Add Project
+                </button>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="d-flex justify-content-sm-end">
+                <div class="search-box ms-2">
+                  <input
+                    type="text"
+                    name="searchQuery"
+                    class="form-control search"
+                    placeholder="Search..."
+                    required=""
+                  />
+                  <i class="ri-search-line search-icon"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive table-card mt-3 mb-1">
+            <table class="table">
+              <thead>
+                <tr class="bg-light text-muted">
+                  <th>No</th>
+                  <th>Image</th>
+                  <th>Title Project</th>
+                  <th>Project Description</th>
+                  <th>Tanggal Pembuatan</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container>
+                  <tr>
+                    <!-- <ng-container *ngIf="document.id_area === id_area" >        -->
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center"></td>
+                    <td>
+                      <div class="d-flex gap-2 justify-content-center">
+                        <div class="read">
+                          <button class="btn btn-sm btn-primary read-item-btn">
+                            Detail
+                          </button>
+                        </div>
+                        <div class="edit">
+                          <button class="btn btn-sm btn-success edit-item-btn">
+                            Update
+                          </button>
+                        </div>
+                        <div class="remove">
+                          <button
+                            class="btn btn-sm btn-danger remove-item-btn"
+                            data-bs-toggle="modal"
+                            data-bs-target=".bs-example-modal-center"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- </ng-container>   -->
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row justify-content-md-between align-items-md-center">
+            <div class="col col-sm-6">
+              <div
+                class="dataTables_info mb-2"
+                id="tickets-table_info"
+                role="status"
+                aria-live="polite"
+              >
+                Showing entries
+              </div>
+            </div>
+            <!-- Pagination -->
+            <div class="col col-sm-6">
+              <div class="text-sm-right float-end listjs-pagination">
+                <nav aria-label="Page navigation masterList">
+                  <ul class="pagination">
+                    <button class="btn btn-primary">Previous</button>
+                    <button class="btn btn-primary">Next</button>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <!-- End Pagination -->
+          </div>
+        </div>
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- end col -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+
+<!-- Remove Modal -->
+<ng-template #removeModal let-modal>
+  <div class="modal-body text-center p-5">
+    <div class="mt-4">
+      <h3 class="mb-3">ARE YOU SURE ?</h3>
+      <p class="text-muted mb-4">Are you sure to remove this document?</p>
+      <div class="hstack gap-2 justify-content-center">
+        <button
+          type="button"
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Close click')"
+        >
+          Close
+        </button>
+        <a class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
