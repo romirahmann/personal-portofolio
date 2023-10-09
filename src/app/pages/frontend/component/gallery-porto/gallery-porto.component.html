@@ -9,36 +9,42 @@
     <div class="row mt-5">
         <div class="col-12 text-center">
             <ul class="list-inline categories-filter" id="filter">
-                <li class="list-inline-item "><a class="categories active text-white" data-filter="*">All</a></li>
-                <li class="list-inline-item"><a class="categories text-white" data-filter=".project" >Web Development</a></li>
-                <li class="list-inline-item"><a class="categories text-white" data-filter=".designing" >Design Graphic</a></li>
-                <li class="list-inline-item"><a class="categories text-white" data-filter=".photography" >Photography</a></li>
-                <li class="list-inline-item"><a class="categories text-white" data-filter=".development">Videography & Animation</a></li>
+                <li class="list-inline-item "><a class="categories active text-white" data-filter="*" (click)="activeCategory(0)"
+                    [ngClass]="{'active': galleryFilter === 0}">All</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter="1" (click)="activeCategory(1)"
+                    [ngClass]="{'active': galleryFilter === 1 }" >Web Development</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter="2" (click)="activeCategory(2)"
+                    [ngClass]="{'active': galleryFilter === 2 }">Design Graphic</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter="3" (click)="activeCategory(3)"
+                    [ngClass]="{'active': galleryFilter === 3 }">Photography</a></li>
+                <li class="list-inline-item"><a class="categories text-white" data-filter="4" (click)="activeCategory(4)"
+                    [ngClass]="{'active': galleryFilter === 4 }">Videography & Motion Graphic</a></li>
             </ul>
         </div>
     </div>
 
     <!-- Gallery -->
     <div class="row mt-3">
-        <ng-container *ngFor="let porto of displayPorto">
-            <div class="col-12 col-md-4">
-                <div class="gallery-box card">
-                    <div class="gallery-container">
-                        <a class="image-popup" title="">
-                            <img class="gallery-img img-fluid mx-auto" src="https://img.freepik.com/free-photo/autumn-leaf-falling-revealing-intricate-leaf-vein-generated-by-ai_188544-9869.jpg" alt=""/>
-                            <!-- <div class="gallery-overlay" (click)="open(i)">
-                                <h5 class="overlay-caption">{{data.title}}</h5>
-                            </div> -->
-                        </a>
-                    </div>
-                    <div class="box-content">
-                        <div class="d-flex align-items-center mt-1">
-                            <div class="flex-grow-1 text-muted"><a href="#" class="text-muted">Web Design Lomba Olivia</a></div>
+        <ng-container *ngIf="dataProjects">
+            <ng-container *ngFor="let porto of filterredData; let i = index">
+                <div class="col-12 col-md-4">
+                    <div class="gallery-box card">
+                        <div class="gallery-container">
+                            <a class="image-popup" title="">
+                                <img class="gallery-img img-fluid mx-auto" src="http://localhost:3000/api/file/{{porto.image_names[0]}}" alt="" style="width: 100%; height: 100%; object-fit: cover;"/>
+                                <!-- <div class="gallery-overlay" (click)="open(i)">
+                                    <h5 class="overlay-caption">{{data.title}}</h5>
+                                </div> -->
+                            </a>
+                        </div>
+                        <div class="box-content">
+                            <div class="d-flex align-items-center mt-1">
+                                <div class="flex-grow-1 text-muted"><a href="#" class="text-muted">{{porto.project_title}}</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </ng-container>
-        
+            </ng-container>
+        </ng-container> 
     </div>
 </div>

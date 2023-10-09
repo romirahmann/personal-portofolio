@@ -3,8 +3,9 @@ import { RouterModule, Routes } from "@angular/router";
 
 // Component pages
 import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
-import { WebdevComponent } from "./admin/webdev/webdev.component";
 import { AddProjectComponent } from "./admin/add-project/add-project.component";
+import { ListProjectComponent } from "./admin/list-project/list-project.component";
+import { AddImageComponent } from "./admin/add-image/add-image.component";
 
 const routes: Routes = [
   {
@@ -17,12 +18,16 @@ const routes: Routes = [
       import("./dashboards/dashboards.module").then((m) => m.DashboardsModule),
   },
   {
-    path: "web-dev",
-    component: WebdevComponent,
+    path: "project-list",
+    component: ListProjectComponent,
   },
   {
     path: "add-project",
     component: AddProjectComponent,
+  },
+  {
+    path: "add-image",
+    component: AddImageComponent,
   },
 ];
 

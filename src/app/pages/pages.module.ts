@@ -28,11 +28,12 @@ import { SharedModule } from "../shared/shared.module";
 import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 import { ToastsContainer } from "./dashboards/dashboard/toasts-container.component";
 import { DashboardsModule } from "./dashboards/dashboards.module";
-import { WebdevComponent } from './admin/webdev/webdev.component';
 import { AddProjectComponent } from './admin/add-project/add-project.component';
+import { ListProjectComponent } from './admin/list-project/list-project.component';
+import { AddImageComponent } from './admin/add-image/add-image.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ToastsContainer, WebdevComponent, AddProjectComponent],
+  declarations: [DashboardComponent, ToastsContainer, AddProjectComponent, ListProjectComponent, AddImageComponent],
   imports: [
     CommonModule,
     FormsModule,

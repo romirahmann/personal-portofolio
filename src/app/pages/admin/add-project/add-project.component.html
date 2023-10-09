@@ -6,73 +6,44 @@
 <!-- End Breadcrumbs -->
 
 <div class="container">
-  <form enctype="multipart/form-data">
+  <form (submit)="onSubmit()" enctype="multipart/form-data">
     <div class="card">
       <div class="card-body">
         <h1>Add Project</h1>
         <hr />
         <div class="mb-3">
-          <label class="form-label" for="documentTitle">Project Title</label>
-          <input
+          <label class="form-label" for="projectTitle">Project Title</label>
+          <input        
             type="text"
             class="form-control"
-            id="documentTitle"
-            name="documentTitle"
+            id="projectTitle"
+            name="projectTitle"
+            [(ngModel)]="projectTitle"
             required
           />
         </div>
         <div>
-          <label class="form-label" for="documentCode">Description</label>
+          <label class="form-label" for="description">Description</label>
           <input
             type="text"
             class="form-control"
-            id="documentCode"
-            name="documentCode"
+            id="description"
+            name="description"
+            [(ngModel)]="description"
             required
           />
         </div>
         <div class="mt-3">
-          <label class="form-label" for="area">Category</label>
-          <select class="form-select" id="area" name="documentArea" required>
-            <option selected>Open this select Area</option>
-            <option value="1">IBF</option>
-            <option value="2">Preparasi</option>
-            <option value="3">Packing</option>
-            <option value="4">General</option>
+          <label class="form-label" for="categoryId">Category</label>
+          <select [(ngModel)]="categoryId" class="form-select" id="categoryId" name="categoryId" required>
+            <!-- <option selected>Open this select Categories</option> -->
+            <ng-container *ngFor="let option of categories" >
+              <option value="{{option.categories_id}}"> {{option.categories_name}} </option>
+            </ng-container>
           </select>
         </div>
-        <div class="mb-3 mt-2">
-          <label class="form-label" for="videoTitle">TEST</label>
-          <input
-            type="text"
-            class="form-control"
-            id="videoTitle"
-            name="videoTitle"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label class="form-label" for="videoUrl">Videos Url</label>
-          <input
-            type="text"
-            class="form-control"
-            id="videoUrl"
-            name="videoUrl"
-            required
-          />
-        </div>
         <div class="mt-3">
-          <label for="documentFile" class="form-label">File Document</label>
-          <input
-            class="form-control"
-            type="file"
-            id="documentFile"
-            name="documentFile"
-            required
-          />
-        </div>
-        <div class="mt-3">
-          <button type="submit" class="btn btn-primary">Add Document</button>
+          <button type="submit" class="btn btn-primary">Add Project</button>
         </div>
       </div>
     </div>

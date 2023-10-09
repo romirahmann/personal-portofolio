@@ -16,13 +16,6 @@
           <div class="row g-4 mb-3">
             <div class="col-sm-auto">
               <div class="d-flex gap-1">
-                <button
-                  routerLink="/admin/add-project"
-                  type="button"
-                  class="btn btn-success add-btn"
-                >
-                  <i class="ri-add-line align-bottom me-1"></i> Add Project
-                </button>
               </div>
             </div>
             <div class="col-sm">
@@ -49,19 +42,17 @@
                   <th>Image</th>
                   <th>Title Project</th>
                   <th>Project Description</th>
-                  <th>Tanggal Pembuatan</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <ng-container>
+                <ng-container *ngFor="let project of dataProjects; let i = index">
                   <tr>
                     <!-- <ng-container *ngIf="document.id_area === id_area" >        -->
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="text-center"></td>
+                    <td> {{(currentPage - 1) * pageSize + i + 1}} </td>
+                    <td> <img src="http://localhost:3000/api/file/{{project.image_names[0]}}" class="rounded avatar-xl" alt="..."> </td>
+                    <td> {{project.project_title}} </td>
+                    <td> {{project.description}} </td>
                     <td>
                       <div class="d-flex gap-2 justify-content-center">
                         <div class="read">
@@ -100,7 +91,7 @@
                 role="status"
                 aria-live="polite"
               >
-                Showing entries
+                Showing {{ getStartIndex() }} - {{ getEndIndex() }} entries {{ entires }}
               </div>
             </div>
             <!-- Pagination -->
