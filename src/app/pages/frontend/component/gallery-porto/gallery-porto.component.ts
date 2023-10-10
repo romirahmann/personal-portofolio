@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/core/services/project.service';
 import { Router } from '@angular/router';
 import { Lightbox } from 'ngx-lightbox';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ViewPortoComponent } from '../view-porto/view-porto.component';
 
 @Component({
   selector: 'app-gallery-porto',
@@ -13,7 +15,7 @@ export class GalleryPortoComponent {
   filterredData: any;
   galleryFilter: number = 0;
   images!: any;
-  constructor(private apiService: ProjectService, private router: Router, private lightbox: Lightbox){}
+  constructor(private apiService: ProjectService, private router: Router, private lightbox: Lightbox, private modalService: NgbModal){}
   ngOnInit() {
     this.fecthProject();
     
@@ -58,6 +60,14 @@ open(index: number): void {
 close(): void {
   // close lightbox programmatically
   this.lightbox.close();
+}
+
+// MODAL
+openXl(id: number) {
+  // this.modalService.open(content, { size: 'xl' });
+  const modalRef = this.modalService.open(ViewPortoComponent, { size: 'lg' });
+  modalRef.componentInstance.id = id;
+  console.log("ini di landing: " + id)
 }
 
 }

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProjectService } from 'src/app/core/services/project.service';
-import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-view-porto',
@@ -9,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./view-porto.component.scss']
 })
 export class ViewPortoComponent {
+
+  @Input() id!: number;
 
   // ProjectData
   dataProjects!: any;
@@ -22,11 +25,13 @@ export class ViewPortoComponent {
   gambarUtama!: string;
   imageActive!: string;
 
-  constructor(private apiService: ProjectService, private router: ActivatedRoute){}
+  constructor(private apiService: ProjectService, private router: ActivatedRoute, public activeModal: NgbActiveModal){
+  }
   
   ngOnInit() { 
     this.getParams();
-    this.fecthAllProject(); 
+    this.fecthAllProject();
+    console.log(this.id)
   }
 
   getParams(){
@@ -36,7 +41,7 @@ export class ViewPortoComponent {
   }
 
   fecthAllProject(){
-    this.apiService.getAllDataByProjectId(this.projectId).subscribe(
+    this.apiService.getAllDataByProjectId(this.id).subscribe(
       (res: any) => {
         // console.log(res.data);
         const projects = res.data.map((project: any) => ({
@@ -45,6 +50,7 @@ export class ViewPortoComponent {
         }));
         this.dataProjects = projects.filter((project: any) => !project.is_deleted);
         this.displayProjects = this.dataProjects[0]
+        console.log(this.displayProjects)
         this.images = this.dataProjects[0].image_names;
         this.imageActive = this.images[0];
         if (this.images.length > 0) {

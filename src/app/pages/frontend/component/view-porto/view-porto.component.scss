@@ -1,4 +1,23 @@
+.bg-dark{
+    background-color: #2d2e32;
+  }
+.semi-dark {
+  background-color: #25262a;
+}
 .active {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 1px solid red;
+}
+.carousel-caption:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Merubah warna indikator active */
+.carousel-control-prev-icon {
+  background-color: red; /* Ganti warna latar belakang sesuai keinginan Anda */
+}
+
+/* Merubah warna indikator non-active */
+.carousel-indicators li {
+  background-color: gray; /* Ganti warna latar belakang sesuai keinginan Anda */
 }

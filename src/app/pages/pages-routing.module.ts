@@ -30,10 +30,10 @@ const routes: Routes = [
     path: "add-image",
     component: AddImageComponent,
   },
-  {
-    path: "view/:projectId",
-    component: ViewPortoComponent,
-  },
+  // {
+  //   path: "view/:project_id",
+  //   component: ViewPortoComponent,
+  // },
 ];
 
 @NgModule({
