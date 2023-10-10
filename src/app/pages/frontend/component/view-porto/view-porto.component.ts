@@ -18,6 +18,10 @@ export class ViewPortoComponent {
   // parameter
   projectId!: number;
 
+  // image
+  gambarUtama!: string;
+  imageActive!: string;
+
   constructor(private apiService: ProjectService, private router: ActivatedRoute){}
   
   ngOnInit() { 
@@ -42,8 +46,24 @@ export class ViewPortoComponent {
         this.dataProjects = projects.filter((project: any) => !project.is_deleted);
         this.displayProjects = this.dataProjects[0]
         this.images = this.dataProjects[0].image_names;
+        this.imageActive = this.images[0];
+        if (this.images.length > 0) {
+          this.firstImage(this.images[0]);  
+        }
       }
     )
   }
+
+  firstImage(filename: string) {
+    if (filename) {
+      this.gambarUtama = `http://localhost:3000/api/file/${filename}`;
+    }
+  }
+
+  gantiGambarUtama(image: string) {
+    this.gambarUtama = `http://localhost:3000/api/file/${image}`;
+    this.imageActive = image;
+  }
+
 
 }

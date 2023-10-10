@@ -1,24 +1,19 @@
 <div class="container-fluid background-web p-0">
     <div class="container mt-5">
-     <h1>Gallery</h1>
-     <hr>
-     <div class="row">
-       <div class="col-12 col-md-7">
-        <div class="row ">
-            <ng-container *ngFor="let image of images">
-                <div class="col-12 col-md-12 mt-2 ">
-                    <img src="http://localhost:3000/api/file/{{image}}" class="img-fluid" alt="img-fluid">
-                </div>
-            </ng-container>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <img id="gambar-utama" [src]="gambarUtama" class="img-fluid" alt="Gambar Utama">
+            </div>
+            <div class="col-12 col-md-4">
+                <ng-container *ngFor="let image of images" >
+                    <div class="col-12 col-md-6 mt-2">
+                        <a (click)="gantiGambarUtama(image)" class="thumbnail" >
+                            <img src="http://localhost:3000/api/file/{{image}}" [ngClass]="{'active': image === imageActive || imageActive === gambarUtama}" class="img-fluid" alt="Gambar 1">
+                        </a>
+                    </div>
+                </ng-container>
+            </div>
         </div>
-       </div>
-       <div class="col-12 ms-2 col-md-4 card p-2">
-        <div class="card-body">
-            <h2>{{displayProjects?.project_title}}</h2>
-            <p>{{displayProjects?.description}}</p>
-        </div>
-       </div>
-     </div>
-    </div>
-  </div>
+    </div>    
+</div>
   
