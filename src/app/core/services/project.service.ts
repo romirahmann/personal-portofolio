@@ -26,6 +26,9 @@ export class ProjectService {
   getAllDataProject():Observable<any>{
     return this.http.get(`${this.baseUrl}/master/data-projects`);
   }
+  getAllDataByProjectId(projectId: number):Observable<any>{
+    return this.http.get(`${this.baseUrl}/master/data-projects/${projectId}`);
+  }
   addProject(data:any):Observable<any>{
     return this.http.post(`${this.baseUrl}/master/project`, data);
   }

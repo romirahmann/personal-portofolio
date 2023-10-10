@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/core/services/project.service';
+import { Router } from '@angular/router';
+import { Lightbox } from 'ngx-lightbox';
 
 @Component({
   selector: 'app-gallery-porto',
@@ -10,7 +12,8 @@ export class GalleryPortoComponent {
   dataProjects: any;
   filterredData: any;
   galleryFilter: number = 0;
-  constructor(private apiService: ProjectService){}
+  images!: any;
+  constructor(private apiService: ProjectService, private router: Router, private lightbox: Lightbox){}
   ngOnInit() {
     this.fecthProject();
     
@@ -40,6 +43,21 @@ activeCategory(category: number) {
   } else {
     this.filterredData = this.dataProjects.filter((x: any) => x.categories_id === this.galleryFilter);
   }
+}
+
+navigateToViewPorto(id: number) {
+  // Gantilah '/view' dengan rute yang sesuai, dan porto.project_id dengan parameter yang diperlukan.
+  this.router.navigate(['/view', id]);
+}
+
+open(index: number): void {
+  // open lightbox
+  this.lightbox.open(this.images);
+}
+
+close(): void {
+  // close lightbox programmatically
+  this.lightbox.close();
 }
 
 }

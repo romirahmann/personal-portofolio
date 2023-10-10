@@ -32,15 +32,10 @@
                         <div class="gallery-container">
                             <a class="image-popup" title="">
                                 <img class="gallery-img img-fluid mx-auto" src="http://localhost:3000/api/file/{{porto.image_names[0]}}" alt="" style="width: 100%; height: 100%; object-fit: cover;"/>
-                                <!-- <div class="gallery-overlay" (click)="open(i)">
-                                    <h5 class="overlay-caption">{{data.title}}</h5>
-                                </div> -->
+                                <div class="gallery-overlay" (click)="navigateToViewPorto(porto.project_id)">
+                                    <h5 class="overlay-caption">{{porto.project_title}}</h5>
+                                </div>
                             </a>
-                        </div>
-                        <div class="box-content">
-                            <div class="d-flex align-items-center mt-1">
-                                <div class="flex-grow-1 text-muted"><a href="#" class="text-muted">{{porto.project_title}}</a></div>
-                            </div>
                         </div>
                     </div>
                 </div>
