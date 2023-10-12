@@ -35,6 +35,7 @@ export class ListProjectComponent {
       (res:any) => {
         const projects = res.data
         this.dataProjects = projects.filter((project: any) => !project.is_deleted);
+        console.log(this.dataProjects);
         this.entires = this.dataProjects.length;
         this.calculateTotalPages();
         this.updateDisplayDocuments();

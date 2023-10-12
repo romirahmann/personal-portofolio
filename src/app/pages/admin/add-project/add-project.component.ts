@@ -17,6 +17,10 @@ export class AddProjectComponent {
   projectTitle!: string;
   description!: string;
   categoryId!: number;
+  createdBy!: string;
+  completedOn!: Date;
+  clientName!: string;
+
 
   constructor(private apiService: ProjectService){}
 
@@ -54,9 +58,11 @@ export class AddProjectComponent {
       (res: any) => {
         console.log(res, "Insert Data Berhasil");
         this.fecthProject();
-        this.projectTitle = '',
-        this.categoryId = 0,
-        this.description = ''
+        this.projectTitle = '';
+        this.categoryId = 0;
+        this.description = '';
+        this.createdBy = '';
+        this.clientName = '';
       }
     )
   }
@@ -67,6 +73,9 @@ export class AddProjectComponent {
         project_title: this.projectTitle,
         categories_id: this.categoryId,
         description: this.description,
+        created_by: this.createdBy,
+        completed_on: this.completedOn,
+        client_name: this.clientName
       }
     ]
     // console.log(newData)
