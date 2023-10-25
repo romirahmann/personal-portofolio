@@ -6,7 +6,6 @@ import { DashboardComponent } from "./dashboards/dashboard/dashboard.component";
 import { AddProjectComponent } from "./admin/add-project/add-project.component";
 import { ListProjectComponent } from "./admin/list-project/list-project.component";
 import { AddImageComponent } from "./admin/add-image/add-image.component";
-import { ViewPortoComponent } from "./frontend/component/view-porto/view-porto.component";
 
 const routes: Routes = [
   {

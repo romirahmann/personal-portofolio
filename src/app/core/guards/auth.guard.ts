@@ -1,39 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-
-// Auth Services
-import { AuthenticationService } from '../services/auth.service';
-import { AuthfakeauthenticationService } from '../services/authfake.service';
-import { environment } from '../../../environments/environment';
+import { CanActivate, Router } from '@angular/router';
+import { TokenStorageService } from '../services/token-storage.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
-    constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private authFackservice: AuthfakeauthenticationService
-    ) { }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (environment.defaultauth === 'firebase') {
-            const currentUser = this.authenticationService.currentUser();
-            if (currentUser) {
-                // logged in so return true
-                return true;
+export class AuthGuard implements CanActivate {
+    constructor(private apiService: TokenStorageService, private router: Router) { }
+    
+    canActivate(): Observable<boolean> {
+        return this.apiService.isLoggedIn().pipe(
+          map((isLoggedIn: boolean) => {
+            if (isLoggedIn) {
+              // User is logged in, allow access to the route
+              return true;
+            } else {
+              // User is not logged in, redirect to the login page
+              this.router.navigate(['/auth/login']);
+              return false;
             }
-        } else {
-            const currentUser = this.authFackservice.currentUserValue;
-            if (currentUser) {
-                // logged in so return true
-                return true;
-            }
-            // check if user data is in storage is logged in via API.
-            if(localStorage.getItem('currentUser')) {
-                return true;
-            }
-        }
-        // not logged in so redirect to login page with the return url
-        this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-        return false;
-    }
+          })
+        );
+      }
 }

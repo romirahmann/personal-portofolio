@@ -7,9 +7,6 @@ import { EventService } from '../../core/services/event.service';
   styleUrls: ['./two-column.component.scss']
 })
 
-/**
- * TwoColumnComponent
- */
 export class TwoColumnComponent implements OnInit {
 
   constructor(private eventService: EventService) { }

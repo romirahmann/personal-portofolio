@@ -1,38 +1,39 @@
 import { Injectable } from '@angular/core';
-
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'currentUser';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
+  private authToken = new BehaviorSubject<string>(localStorage.getItem('auth_token') || '');
+  private authUserName = new BehaviorSubject<any>(localStorage.getItem('auth_username'));
   constructor() { }
 
-  signOut(): void {
-    window.sessionStorage.clear();
+  saveToken(token: string, username: string){
+    localStorage.setItem('auth_token', token);
+    localStorage.setItem('auth_username', username);
+    this.authToken.next(token);
+    this.authUserName.next(username);
   }
 
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+  getToken(){
+    return localStorage.getItem('auth_token');
   }
 
-  public getToken(): string | null {
-    return localStorage.getItem('token');
+  getUserName(): any{
+    return localStorage.getItem('auth_username');
   }
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  isLoggedIn(): Observable<boolean> {
+    return this.authToken.pipe(
+      map((token: string) => !!token)
+    );
   }
 
-  public getUser(): any {
-    const user = window.localStorage.getItem(USER_KEY);    
-    if (user) {
-      return JSON.parse(user);
-    }
-
-    return {};
+  logOut(){
+    this.authToken.next('');
+    this.authUserName.next('');
   }
+
 }

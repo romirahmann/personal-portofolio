@@ -8,14 +8,10 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsContainer } from './login/toasts-container.component';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { SigninModule } from "./auth/signin/signin.module";
-import { SignupModule } from "./auth/signup/signup.module";
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    RegisterComponent,
     LoginComponent,
     ToastsContainer
   ],
@@ -24,7 +20,6 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     FormsModule,
     AccountRoutingModule,
-    SigninModule,
     NgbToastModule
   ]
 })
